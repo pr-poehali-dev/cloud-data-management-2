@@ -1,62 +1,42 @@
 import { useState, useEffect, useRef } from "react"
-import { ArrowUpRight } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
-const projects = [
+const advantages = [
   {
-    id: 1,
-    title: "Резиденция Светлая",
-    category: "Жилой дом",
-    location: "Москва, Россия",
-    year: "2024",
-    image: "/images/hously-1.png",
+    title: "Аттестованные профи",
+    description: "В команде только сертифицированные бухгалтеры. Каждый знает свою отрасль досконально.",
+    icon: "BadgeCheck",
   },
   {
-    id: 2,
-    title: "Павильон Стекло",
-    category: "Коммерческий объект",
-    location: "Санкт-Петербург, Россия",
-    year: "2023",
-    image: "/images/hously-2.png",
+    title: "Всегда в курсе",
+    description: "Мониторим изменения в законах 24/7. Вы узнаёте о важном до того, как оно станет проблемой.",
+    icon: "RefreshCw",
   },
   {
-    id: 3,
-    title: "Дом у моря",
-    category: "Жилой дом",
-    location: "Сочи, Россия",
-    year: "2023",
-    image: "/images/hously-3.png",
-  },
-  {
-    id: 4,
-    title: "Северный приют",
-    category: "Гостиничный комплекс",
-    location: "Казань, Россия",
-    year: "2024",
-    image: "/images/hously-4.png",
+    title: "Под ваш бизнес",
+    description: "Не продаём типовые пакеты. Сначала разбираемся в ваших процессах, потом предлагаем решение.",
+    icon: "UserCheck",
   },
 ]
 
 export function Projects() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
-  const [revealedImages, setRevealedImages] = useState<Set<number>>(new Set())
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [visibleItems, setVisibleItems] = useState<number[]>([])
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute("data-index"))
           if (entry.isIntersecting) {
-            const index = imageRefs.current.indexOf(entry.target as HTMLDivElement)
-            if (index !== -1) {
-              setRevealedImages((prev) => new Set(prev).add(projects[index].id))
-            }
+            setVisibleItems((prev) => [...new Set([...prev, index])])
           }
         })
       },
       { threshold: 0.2 },
     )
 
-    imageRefs.current.forEach((ref) => {
+    itemRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref)
     })
 
@@ -64,57 +44,34 @@ export function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="py-32 md:py-29 bg-secondary/50">
+    <section id="advantages" className="py-32 md:py-29 bg-secondary/50">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Избранные работы</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Наши проекты</h2>
-          </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            Смотреть все проекты
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+        <div className="max-w-3xl mb-16">
+          <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Почему мы</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
+            Три причины доверить нам цифры
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, index) => (
-            <article
-              key={project.id}
-              className="group cursor-pointer"
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          {advantages.map((item, index) => (
+            <div
+              key={item.title}
+              ref={(el) => {
+                itemRefs.current[index] = el
+              }}
+              data-index={index}
+              className={`bg-card border border-border p-8 transition-all duration-700 ${
+                visibleItems.includes(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${index * 120}ms` }}
             >
-              <div ref={(el) => (imageRefs.current[index] = el)} className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className={`w-full h-full object-cover transition-transform duration-700 ${
-                    hoveredId === project.id ? "scale-105" : "scale-100"
-                  }`}
-                />
-                <div
-                  className="absolute inset-0 bg-primary origin-top"
-                  style={{
-                    transform: revealedImages.has(project.id) ? "scaleY(0)" : "scaleY(1)",
-                    transition: "transform 1.5s cubic-bezier(0.76, 0, 0.24, 1)",
-                  }}
-                />
+              <div className="w-14 h-14 flex items-center justify-center bg-accent/15 text-accent mb-6">
+                <Icon name={item.icon} size={28} />
               </div>
-
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-medium mb-2 group-hover:underline underline-offset-4">{project.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {project.category} · {project.location}
-                  </p>
-                </div>
-                <span className="text-muted-foreground/60 text-sm">{project.year}</span>
-              </div>
-            </article>
+              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+            </div>
           ))}
         </div>
       </div>

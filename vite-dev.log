@@ -1,0 +1,33 @@
+
+> vite_react_shadcn_ts@0.0.0 dev
+> vite
+
+
+  VITE v5.4.21  ready in 607 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://10.112.159.27:5173/
+Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+8:34:25 PM [vite] hmr update /src/index.css
+8:34:26 PM [vite] hmr update /src/index.css
+8:34:36 PM [vite] hmr update /src/index.css
+8:34:37 PM [vite] hmr update /src/index.css
+8:34:53 PM [vite] hmr update /src/index.css
+8:34:53 PM [vite] hmr update /src/index.css
+8:34:57 PM [vite] hmr update /src/components/HighlightedText.tsx, /src/index.css
+8:35:24 PM [vite] hmr update /src/components/Header.tsx, /src/index.css
+8:35:39 PM [vite] hmr update /src/components/Header.tsx, /src/index.css
+8:36:01 PM [vite] hmr update /src/components/Hero.tsx, /src/index.css
+8:36:16 PM [vite] hmr update /src/components/Philosophy.tsx, /src/index.css
+8:36:30 PM [vite] hmr update /src/components/Philosophy.tsx, /src/index.css
+8:36:49 PM [vite] hmr update /src/components/Projects.tsx, /src/index.css
+8:37:10 PM [vite] hmr update /src/components/Expertise.tsx, /src/index.css
+8:37:28 PM [vite] hmr update /src/components/Expertise.tsx, /src/index.css
+8:37:55 PM [vite] hmr update /src/components/FAQ.tsx, /src/index.css
+8:38:30 PM [vite] hmr update /src/components/CallToAction.tsx, /src/index.css
+8:38:46 PM [vite] hmr update /src/components/Footer.tsx, /src/index.css
+8:39:03 PM [vite] hmr update /src/components/Philosophy.tsx, /src/index.css
+8:39:19 PM [vite] page reload index.html
+8:42:08 PM [vite] page reload index.html

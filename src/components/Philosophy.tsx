@@ -3,23 +3,23 @@ import { HighlightedText } from "./HighlightedText"
 
 const philosophyItems = [
   {
-    title: "Минимализм со смыслом",
+    title: "15 лет на рынке",
     description:
-      "Каждый элемент имеет свое назначение и пространство для дыхания. Мы убираем лишнее, чтобы раскрыть то, что действительно важно.",
+      "С 2010 года ведём бухгалтерию компаний разного масштаба — от индивидуальных предпринимателей до производств.",
   },
   {
-    title: "Архитектурный подход",
+    title: "Отраслевая экспертиза",
     description:
-      "Планировки, вдохновленные структурой, ритмом и материальностью. Здания, которые говорят через пропорции и свет.",
+      "Знаем специфику торговли, строительства, услуг и IT. Учитываем все нюансы именно вашей сферы.",
   },
   {
-    title: "Естественная динамика",
+    title: "Спокойствие за отчётность",
     description:
-      "Движение поддерживает восприятие, но никогда не отвлекает. Анимация, которая ощущается естественно, как свет, скользящий по комнате.",
+      "Берём ответственность на себя. Вы не думаете про ФНС, сроки и штрафы — этим занимаемся мы.",
   },
   {
-    title: "Вневременная эстетика",
-    description: "Элегантный, спокойный и долговечный визуальный язык. Дизайн, который превосходит тренды и стареет с достоинством.",
+    title: "Дистанционно и удобно",
+    description: "Работаем по всей России. Электронный документооборот — никуда ездить не нужно.",
   },
 ]
 
@@ -53,26 +53,26 @@ export function Philosophy() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left column - Title and image */}
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наша философия</p>
-            <h2 className="text-6xl md:text-6xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-8xl">
-              Дизайн с
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">О компании</p>
+            <h2 className="text-5xl md:text-5xl font-semibold leading-[1.15] tracking-tight mb-6 text-balance lg:text-7xl">
+              Чтобы вы спали
               <br />
-              <HighlightedText>намерением</HighlightedText>
+              <HighlightedText>спокойно</HighlightedText>
             </h2>
 
-            <div className="relative hidden lg:block">
+            <div className="relative hidden lg:block mt-8">
               <img
-                src="/images/exterior.png"
-                alt="Архитектурный эскиз рабочего пространства"
-                className="opacity-90 relative z-10 w-auto"
+                src="https://cdn.poehali.dev/projects/72124934-9ca1-4f88-8d5b-66fa8e83d731/files/d36c2b0a-d8cb-4c95-bea0-84bf1730dde3.jpg"
+                alt="Команда бухгалтеров БухПрофи"
+                className="opacity-95 relative z-10 w-full object-cover aspect-[4/5]"
               />
             </div>
           </div>
 
-          {/* Right column - Description and Philosophy items */}
+          {/* Right column - Description and advantages */}
           <div className="space-y-6 lg:pt-48">
             <p className="text-muted-foreground text-lg leading-relaxed max-w-md mb-12">
-              Архитектура - это больше, чем конструкция. Это то, как мы воспринимаем мир. Мы создаем пространства, которые питают человеческий дух.
+              Мы не просто считаем налоги. Мы делаем так, чтобы вы не думали про ФНС. С 2010 года сопровождаем бизнес — от ИП до производственных компаний. В штате только аттестованные бухгалтеры с опытом в торговле, строительстве, услугах и IT.
             </p>
 
             {philosophyItems.map((item, index) => (

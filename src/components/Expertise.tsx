@@ -1,30 +1,36 @@
 import { useEffect, useRef, useState } from "react"
-import { Home, Building, Armchair, Trees } from "lucide-react"
+import Icon from "@/components/ui/icon"
 import { HighlightedText } from "./HighlightedText"
 
 const expertiseAreas = [
   {
-    title: "Жилая архитектура",
-    description: "Создаем дома, которые сочетают красоту с комфортом, где каждое пространство служит и форме, и функции.",
-    icon: Home,
+    title: "Сопровождение ООО и ИП",
+    description: "Полное ведение бухгалтерии: первичка, проводки, отчётность в ФНС, фонды и Росстат — точно и в срок.",
+    icon: "Building2",
   },
   {
-    title: "Коммерческие объекты",
+    title: "Налоговое планирование",
     description:
-      "Проектируем рабочие пространства, которые вдохновляют на продуктивность и отражают ценности передовых организаций.",
-    icon: Building,
+      "Законная оптимизация налогов под вашу систему налогообложения. Платите ровно столько, сколько нужно.",
+    icon: "Calculator",
   },
   {
-    title: "Дизайн интерьеров",
+    title: "Восстановление учёта",
     description:
-      "Создаем интерьеры, которые гармонируют с архитектурной оболочкой, формируя целостный пространственный опыт.",
-    icon: Armchair,
+      "Наведём порядок в запущенной бухгалтерии: восстановим документы, исправим ошибки, сдадим корректировки.",
+    icon: "FileSearch",
   },
   {
-    title: "Градостроительство",
+    title: "Кадровый учёт и зарплата",
     description:
-      "Формируем сообщества через продуманную интеграцию общественных пространств, зданий и природных элементов.",
-    icon: Trees,
+      "Расчёт зарплаты, отпускных, больничных, ведение кадровых документов и отчётность по сотрудникам.",
+    icon: "Users",
+  },
+  {
+    title: "Консультации",
+    description:
+      "Ответим на любые бухгалтерские и налоговые вопросы. Поможем принять верное решение для бизнеса.",
+    icon: "MessageCircleQuestion",
   },
 ]
 
@@ -58,19 +64,18 @@ export function Expertise() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-3xl mb-20">
           <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наши услуги</p>
-          <h2 className="text-6xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-8xl">
-            <HighlightedText>Экспертиза</HighlightedText>, отточенная
+          <h2 className="text-5xl font-semibold leading-[1.15] tracking-tight mb-6 text-balance lg:text-7xl">
+            Полный <HighlightedText>порядок</HighlightedText>
             <br />
-            практикой
+            в ваших финансах
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Каждый проект опирается на десятилетия совокупного опыта, создавая архитектуру, которая одновременно инновационна и вневременна.
+            Берём на себя всю бухгалтерию, чтобы вы могли сосредоточиться на развитии бизнеса.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
           {expertiseAreas.map((area, index) => {
-            const Icon = area.icon
             return (
               <div
                 key={area.title}
@@ -83,17 +88,8 @@ export function Expertise() {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div
-                  className={`transition-all duration-1000 ${
-                    visibleItems.includes(index) ? "animate-draw-stroke" : ""
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 150}ms`,
-                  }}
-                >
-                  <Icon className="w-10 h-10 mb-4 text-foreground" strokeWidth={1.25} />
-                </div>
-                <h3 className="text-xl font-medium mb-4">{area.title}</h3>
+                <Icon name={area.icon} size={40} className="mb-4 text-accent" strokeWidth={1.25} />
+                <h3 className="text-xl font-semibold mb-4">{area.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{area.description}</p>
               </div>
             )

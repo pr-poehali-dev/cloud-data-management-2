@@ -120,15 +120,16 @@ export function Hero() {
     <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hously-background.png"
-          alt="Минималистичный архитектурный интерьер"
+          src="https://cdn.poehali.dev/projects/72124934-9ca1-4f88-8d5b-66fa8e83d731/files/d36c2b0a-d8cb-4c95-bea0-84bf1730dde3.jpg"
+          alt="Профессиональный бухгалтерский офис"
           className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-primary/70" />
       </div>
 
       <div
         ref={contentRef}
-        className="container mx-auto px-6 md:px-12 lg:pt-0 relative z-10 pb-0 pl-1 pr-1 pt-8 md:pt-0"
+        className="container mx-auto px-6 md:px-12 lg:pt-0 relative z-10 pb-0 pt-8 md:pt-0"
         style={{
           willChange: "transform",
           transform: "translateY(0px)",
@@ -136,31 +137,33 @@ export function Hero() {
           transformStyle: "preserve-3d",
         }}
       >
-        <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-0">{"Архитектурная студия"}</p>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-sm tracking-[0.3em] uppercase text-accent mb-6">Бухгалтерское сопровождение</p>
 
           <h1
             ref={titleRef}
-            className="text-7xl font-medium text-balance text-center text-white mb-0 tracking-tight leading-[0.9] lg:text-8xl"
+            className="text-5xl md:text-6xl font-semibold text-balance text-white mb-8 tracking-tight leading-[1.05] lg:text-7xl"
           >
-            {"Создаем пространства"}
-            <br />
-            <span className="text-orange-200">{"для жизни"}</span>
+            Ваш бизнес в <span className="text-accent">надёжных руках</span>
           </h1>
-        </div>
-      </div>
 
-      <div className="absolute inset-0 z-20 pointer-events-none">
-        <img
-          src="/images/hously-foreground.png"
-          alt="Мраморная кухонная столешница"
-          className="w-full h-full object-cover object-center"
-        />
+          <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mx-auto mb-10">
+            15 лет опыта в бухгалтерии. Никаких штрафов, никаких срывов отчётности — только порядок в цифрах.
+          </p>
+
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center gap-3 bg-accent text-primary px-8 py-4 text-sm font-medium tracking-wide hover:bg-white transition-colors duration-300 group"
+          >
+            Бесплатная консультация
+            <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+          </a>
+        </div>
       </div>
 
       {animationComplete && (
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-30">
-          <ArrowDown className="w-5 h-5 text-muted-foreground" />
+          <ArrowDown className="w-5 h-5 text-white/70" />
         </div>
       )}
     </section>
